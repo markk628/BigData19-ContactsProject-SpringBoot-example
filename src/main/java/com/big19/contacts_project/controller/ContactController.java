@@ -29,7 +29,7 @@ public class ContactController {
     @Autowired
     private SessionManager sessionManager;
 
-    // 사용자 입력 실패시 입력한 정보를 다시 보여줄수있게 ContactDTO 일시 저장할 공간
+    // 연락처 입력 실패시 입력한 정보를 다시 보여줄수있게 ContactDTO 일시 저장할 공간
     private ContactDTO attemptedInsertInfo = null;
 
     // 연락처 입력 페이지
@@ -64,10 +64,12 @@ public class ContactController {
                 attributes.addFlashAttribute("msg", "관계는 가족, 친구, 기타 중 하나야합니다");
                 return "redirect:/contacts/add";
         }
+        // 연락처 태이블에 연락처 추가
         this.contactRepository.insertContact(dto.getName(),
                                              dto.getPhoneNumber(),
                                              dto.getAddress(),
                                              relationship);
+        // 연락처 추가 후 연락처 + 사용자 태이블에 사용자 아이디와 마지막으로 입력한 연락처 아이디 추가
         this.contactRepository.insertMemberContact(this.sessionManager.getCurrentMemberId(),
                                                    this.contactRepository.getLastInsertedId());
         attributes.addFlashAttribute("msg", dto.getName() + " 입력 성공");

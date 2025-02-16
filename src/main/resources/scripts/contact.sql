@@ -35,13 +35,11 @@ CREATE TABLE contacts (
 CREATE TABLE members_contacts(
 	member_id     VARCHAR(50) NOT NULL,
 	contact_id    INT NOT NULL,
-	foreign key(member_id)
+	FOREIGN KEY(member_id)
 			REFERENCES members(member_id),
-	foreign key(contact_id)
+	FOREIGN KEY(contact_id)
 			REFERENCES contacts(contact_id)
 );
-
-commit;
 
 SELECT * FROM members;
 SELECT * FROM members_contacts;
@@ -60,6 +58,8 @@ INSERT INTO contacts (contact_name, contact_number, contact_address, relationshi
 INSERT INTO members_contacts VALUES ('test', 1);
 INSERT INTO members_contacts VALUES ('test', 2);
 INSERT INTO members_contacts VALUES ('test2', 3);
+
+COMMIT;
 
 WITH contacts_relationship AS (
 	SELECT c.contact_id,
