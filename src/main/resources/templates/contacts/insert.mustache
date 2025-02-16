@@ -1,0 +1,49 @@
+{{>layout/header}}
+{{>layout/msg}}
+<form class="container" action="/contacts/add" method="post">
+    {{#contact}}
+        <div class="mb-3">
+            <label class="form-label">이름</label>
+            <input class="form-control" type="text" name="name" value="{{name}}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">번호</label>
+            <input class="form-control" type="text" name="phoneNumber" value="{{phoneNumber}}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">주소</label>
+            <input class="form-control" type="text" name="address" value="{{address}}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">관계</label>
+            <input class="form-control" type="text" name="relationship">
+        </div>
+        <div class="mb-3">
+            <button class="btn btn-outline-primary" type="submit">입력</button>
+            <a href="/contacts" class="btn btn-outline-primary">취소</a>
+        </div>
+    {{/contact}}
+    {{^contact}}
+        <div class="mb-3">
+            <label class="form-label">이름</label>
+            <input class="form-control" type="text" name="name">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">번호</label>
+            <input class="form-control" type="text" name="phoneNumber">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">주소</label>
+            <input class="form-control" type="text" name="address">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">관계</label>
+            <input class="form-control" type="text" name="relationship">
+        </div>
+        <div class="mb-3">
+            <button id="default-btn-width" class="btn btn-outline-primary" type="submit">입력</button>
+            <a id="default-btn-width" href="/contacts" class="btn btn-outline-primary">취소</a>
+        </div>
+    {{/contact}}
+</form>
+{{>layout/footer}}

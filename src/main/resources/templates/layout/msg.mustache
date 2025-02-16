@@ -1,0 +1,12 @@
+{{#msg}}
+    <div class="alert alert-primary alert-dismissible">
+        {{msg}}
+        <button id="dismissButton" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <script>
+            function autoClick() {
+              document.getElementById('dismissButton').click();
+            }
+            setTimeout(autoClick, 5000);
+        </script>
+    </div>
+{{/msg}}

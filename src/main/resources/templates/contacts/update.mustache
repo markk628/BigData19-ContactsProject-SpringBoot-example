@@ -1,0 +1,29 @@
+{{>layout/header}}
+{{>layout/msg}}
+<form class="container" action="/contacts/{{contact.id}}/edit" method="post">
+    {{#contact}}
+        <input name="contactId" type="hidden" value="{{id}}">
+        <div class="mb-3">
+            <label class="form-label">이름</label>
+            <input class="form-control" type="text" name="name" value="{{name}}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">번호</label>
+            <input class="form-control" type="text" name="phoneNumber" value="{{phoneNumber}}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">주소</label>
+            <input class="form-control" type="text" name="address" value="{{address}}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">관계</label>
+            <input class="form-control" type="text" name="relationship" value="{{relationship}}">
+        </div>
+        <div class="mb-3">
+            <button id="default-btn-width" class="btn btn-outline-primary" type="submit">수정</button>
+            <a id="default-btn-width" href="/contacts" class="btn btn-outline-primary">취소</a>
+        </div>
+        <input name="memberId" type="hidden" value="{{memberId}}">
+    {{/contact}}
+</form>
+{{>layout/footer}}

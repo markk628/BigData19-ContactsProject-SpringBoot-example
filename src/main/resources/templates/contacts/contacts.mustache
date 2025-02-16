@@ -1,0 +1,44 @@
+{{>layout/header}}
+{{>layout/msg}}
+<div class="container py-5">
+    <div class="rounded-border p-4">
+        <h2 class="text-center mb-4">연락처</h2>
+        <hr>
+        <form class="d-flex" role="search" action="/contacts/search" method="post">
+            <input class="form-control me-2" type="search" placeholder="이름 입력" aria-label="Search" name="contact-to-search">
+            <button id="default-btn-width" class="btn btn-outline-success" type="submit">검색</button>
+        </form>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">이름</th>
+                <th scope="col">번호</th>
+                <th scope="col">주소</th>
+                <th scope="col">관계</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <!--    mustache는 받은 값이 반복이 가능하면 자동으로 for문을 실행-->
+            {{#contacts}}
+                <tr>
+                    <th>{{name}}</th>
+                    <th>{{phoneNumber}}</th>
+                    <th>{{address}}</th>
+                    <th>{{relationship}}</th>
+                    <th>
+                        <div class="d-flex flex-row align-items-center">
+                            <a id="default-btn-width" href="/contacts/{{id}}/edit" class="btn btn-outline-primary">수정</a>
+                            <form class="container" action="/contacts/{{id}}/delete" method="POST">
+                                <button id="default-btn-width" type="submit" class="btn btn-outline-primary">삭제</button>
+                            </form>
+                        </div>
+                    </th>
+                </tr>
+            {{/contacts}}
+            </tbody>
+        </table>
+        <a id="default-btn-width" href="/contacts/add" class="btn btn-outline-primary">추가</a>
+    </div>
+</div>
+{{>layout/footer}}
